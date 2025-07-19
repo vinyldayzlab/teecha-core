@@ -3,12 +3,11 @@ import type { Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
-import dotenv from "dotenv";
-import config from "./config";
 import v1 from "./routes/v1";
+import errorHandler from "./middleware/error-handler";
+import config from "./config";
 
 export const createServer = () => {
-  dotenv.config();
   const app = express();
   app
     .disable("x-powered-by")
@@ -23,6 +22,8 @@ export const createServer = () => {
   });
 
   app.use("/v1", v1);
+
+  app.use(errorHandler);
 
   return app;
 };
