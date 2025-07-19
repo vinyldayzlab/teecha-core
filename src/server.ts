@@ -5,6 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import config from "./config";
+import v1 from "./routes/v1";
 
 export const createServer = () => {
   dotenv.config();
@@ -20,6 +21,8 @@ export const createServer = () => {
   app.get("/health", (req: Request, res: Response) => {
     res.json({ ok: true, environment: config.env });
   });
+
+  app.use("/v1", v1);
 
   return app;
 };
