@@ -1,5 +1,5 @@
 export default {
-  preset: "ts-jest/presets/default-esm", // Use ESM preset
+  preset: "ts-jest/presets/default-esm",
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
   globals: {
@@ -8,7 +8,6 @@ export default {
     },
   },
   moduleNameMapper: {
-    // Add this if you use path aliases or need to rewrite imports
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 };

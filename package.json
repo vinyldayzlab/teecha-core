@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon",
-    "dev": "nodemon",
-    "test": "jest",
+    "dev": "nodemon --watch src --exec \"node --loader ts-node/esm ./src/index.ts\"",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:watch": "jest --watch",
     "lint": "eslint"
   },
@@ -38,6 +38,7 @@
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "express-oauth2-jwt-bearer": "^1.6.1",
+    "helmet": "^8.1.0",
     "morgan": "^1.10.1"
   }
 }
