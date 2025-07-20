@@ -9,9 +9,6 @@ export default function errorHandler(
   res: Response,
   next: NextFunction,
 ) {
-  console.log(config.debug);
-  console.log(process.env.APP_DEBUG);
-  console.log(process.env.APP_DEBUG === "true");
   if (res.headersSent || config.debug) {
     next(error);
     return;

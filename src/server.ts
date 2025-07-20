@@ -6,6 +6,7 @@ import helmet from "helmet";
 import v1 from "./routes/v1";
 import errorHandler from "./middleware/error-handler";
 import config from "./config";
+import { runIssueTestToken } from "./issue-test-token";
 
 export const createServer = () => {
   const app = express();
@@ -18,6 +19,7 @@ export const createServer = () => {
     .use(helmet());
 
   app.get("/health", (req: Request, res: Response) => {
+    runIssueTestToken();
     res.json({ ok: true, environment: config.env });
   });
 
