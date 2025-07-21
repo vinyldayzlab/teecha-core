@@ -7,8 +7,6 @@ import v1 from "./routes/v1";
 import errorHandler from "./middleware/error-handler";
 import config from "./config";
 import { runIssueTestToken } from "./issue-test-token";
-import mongoose from "mongoose";
-import DatabaseConnectionError from "./errors/DatabaseConnectionError";
 import { connectToDatabase } from "./db";
 
 export const createServer = async () => {
