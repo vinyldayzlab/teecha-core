@@ -5,6 +5,6 @@ import authenticateUser from "../../../middleware/authenticate-user";
 const users: Router = express.Router();
 
 users.use(authenticateUser);
-users.get("/:id", getUser);
+users.get("/", getUser);
 
 export default users;

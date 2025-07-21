@@ -6,5 +6,7 @@ export const getContracts = (req: Request, res: Response) => {
   //     user_id: req.jwtAuth?.payload.sub,
   //   },
   // });
+  // const user = getUserById(req.auth.payload.sub);
+  // console.log("User: ", user);
   res.status(200).json([]);
 };

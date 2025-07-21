@@ -7,6 +7,7 @@ const config = {
   debug: process.env.APP_DEBUG === "true",
   logLevel: process.env.LOG_LEVEL || "info",
   appSecret: process.env.APP_SECRET || "",
+  mongoURL: process.env.MONGO_URL || "",
   issuerBaseUrl: process.env.ISSUER_BASE_URL || "",
   audience: process.env.AUDIENCE || "",
 };
