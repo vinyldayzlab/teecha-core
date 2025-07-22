@@ -1,12 +1,18 @@
-import type { Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
+import { validateContract } from "./service";
 
-export const getContracts = (req: Request, res: Response) => {
-  // const tasks = await prisma.task.findMany({
-  //   where: {
-  //     user_id: req.jwtAuth?.payload.sub,
-  //   },
-  // });
-  // const user = getUserById(req.auth.payload.sub);
-  // console.log("User: ", user);
-  res.status(200).json([]);
+export const validateContractController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { teacher_id, student_email } = req.body;
+    const valid = await validateContract(teacher_id, student_email);
+    res.status(200).json(valid);
+  } catch (err) {
+    next(err);
+  }
 };
+
+// tirar student do pending_students, criar um contrato e adicionar ele no array de contracts dentro de teacher

@@ -3,6 +3,12 @@ import EntityNotFoundError from "../../../errors/EntityNotFoundError";
 import logger from "../../../logger";
 import { getUserByAuth0Id, getUsers } from "../../../db/users";
 
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {};
+
 export const getUser = async (
   req: Request,
   res: Response,
@@ -29,3 +35,7 @@ export const getUser = async (
   }
   res.status(200).json(user);
 };
+
+// createTeachCode;
+// createUserAsTeacher() - this doesnt add user to auth0, only to localDatabase
+//

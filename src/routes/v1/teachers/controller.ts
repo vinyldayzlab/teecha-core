@@ -1,16 +1,16 @@
-import type { Request, Response } from "express";
-import EntityNotFoundError from "../../../errors/EntityNotFoundError";
-import { getTeacherByCode } from "../../../db/teachers";
+import type { NextFunction, Request, Response } from "express";
+import { validateTeacher } from "./service";
 
-export const validateTeacher = async (req: Request, res: Response) => {
-  const { teacher_code } = req.body;
-  const teacher = await getTeacherByCode(teacher_code);
-  if (!teacher) {
-    throw new EntityNotFoundError({
-      message: "Teacher not found with provided code",
-      statusCode: 404,
-      code: "ERR_NF",
-    });
+export const validateTeacherController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { teacher_code } = req.body;
+    const teacherId = await validateTeacher(teacher_code);
+    res.status(200).json(teacherId);
+  } catch (err) {
+    next(err);
   }
-  res.status(200).json(teacher);
 };

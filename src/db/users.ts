@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
   auth0_id: { type: String, required: true },
   teacher_code: { type: String },
+  pending_students: { type: [String], default: [] },
 });
 
 const usersCollection = "users";
@@ -24,12 +26,12 @@ export const getUsers = () => UserModel.find();
 // criar aluno no contrato -> adicionar o student_email e status PENDING
 
 // sou aluno
-// tela de validação do código do professor
-// // validateTeacherCode()
+// você tem cadastro? se não, tela de validação do código do professor, se sim, login
+// // se não: validateTeacherCode()
 // // // se nao existe, avisar
 // // // se existe o código
-// // // // tela de cadastro (se nao existir) ou login (se existir) -> pegar infos do aluno
-// // // // // validateContract(teacherCode, studentEmail)
+// // // // perguntar se tem cadastro ou nao tela de cadastro (se nao existir) ou login (se existir) -> pegar infos do aluno
+// // // // // se nao tem cadastro, infos do aluno e validateContract(teacherCode, studentEmail)
 // // // // // userRegister registra no auth0 (role: student) ou loga
 // // // // // // (if User doesn't exist), userRegister registra no auth0 (role: student) e salva o auth0_id
 // // // // // // (if user exists) existe um usuário. você deseja entrar como professor ou será um aluno de outro professor?

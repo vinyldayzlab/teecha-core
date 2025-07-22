@@ -11,7 +11,7 @@ import Joi from "joi";
 //     "string.max": "Name must not exceed 255 characters",
 //     "any.required": "Name is required",
 //   }),
-// };
+// }
 
 const teacher = {
   teacher_code: Joi.string().min(6).max(6).required().messages({
