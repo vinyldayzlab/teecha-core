@@ -31,9 +31,9 @@ const createTeacher = {
   }),
   roles: Joi.array()
     .items(
-      Joi.string().valid("student", "teacher").messages({
-        "any.only": 'Roles can only be "student" or "teacher"',
-        "string.base": "Each role must be a string",
+      Joi.string().valid("teacher").messages({
+        "any.only": 'Roles can only be "teacher"',
+        "string.base": "Role must be a string",
       }),
     )
     .min(1)
