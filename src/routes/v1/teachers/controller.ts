@@ -9,7 +9,7 @@ export const createTeacherController = async (
   try {
     const { auth0_id, roles } = req.body;
     const user = await initializeTeacher(auth0_id, roles);
-    res.status(200).json(user);
+    res.status(201).json(user);
   } catch (err) {
     next(err);
   }
