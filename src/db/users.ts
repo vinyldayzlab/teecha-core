@@ -11,7 +11,7 @@ export const UserModel = mongoose.model("User", userSchema, usersCollection);
 export const createUser = (values: Record<string, unknown>) =>
   new UserModel(values).save().then((user) => user.toObject());
 export const getUserByAuth0Id = (auth0Id: string) =>
-  UserModel.findOne({ auth0_id: auth0Id });
+  UserModel.findOne({ auth0_id: auth0Id }).lean();
 export const deleteUserById = (id: string) =>
   UserModel.findOneAndDelete({ _id: id });
 export const updateUserById = (
