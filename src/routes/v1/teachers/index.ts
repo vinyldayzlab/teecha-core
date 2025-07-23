@@ -4,7 +4,10 @@ import {
   createTeacherController,
   validateTeacherController,
 } from "./controller";
-import { validateTeacherSchema } from "../../../data/request-schemas";
+import {
+  validateTeacherSchema,
+  createTeacherSchema,
+} from "../../../data/request-schemas";
 import validateRequest from "../../../middleware/validate-request";
 
 const teachers: Router = express.Router();
@@ -15,6 +18,10 @@ teachers.post(
   validateRequest(validateTeacherSchema),
   validateTeacherController,
 );
-teachers.post("/create", createTeacherController);
+teachers.post(
+  "/create",
+  validateRequest(createTeacherSchema),
+  createTeacherController,
+);
 
 export default teachers;
