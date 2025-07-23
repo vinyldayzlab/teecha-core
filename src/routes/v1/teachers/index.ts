@@ -1,6 +1,9 @@
 import express, { Router } from "express";
 import authenticateUser from "../../../middleware/authenticate-user";
-import { validateTeacherController } from "./controller";
+import {
+  createTeacherController,
+  validateTeacherController,
+} from "./controller";
 import { validateTeacherSchema } from "../../../data/request-schemas";
 import validateRequest from "../../../middleware/validate-request";
 
@@ -12,5 +15,6 @@ teachers.post(
   validateRequest(validateTeacherSchema),
   validateTeacherController,
 );
+teachers.post("/create", createTeacherController);
 
 export default teachers;

@@ -14,19 +14,20 @@ export async function validateContract(
     });
   }
 
-  const found = students.pending_students.find(
-    (email) => email === student_email,
-  );
+  // search inside the contract
+  // const found = students.pending_students.find(
+  //   (email) => email === student_email,
+  // );
 
-  if (!found) {
-    throw new EntityNotFoundError({
-      message: "Student not found in teacher's pending contracts",
-      statusCode: 404,
-      code: "ERR_NF",
-    });
-  } else {
-    return {
-      valid: true,
-    };
-  }
+  // if (!found) {
+  //   throw new EntityNotFoundError({
+  //     message: "Student not found in teacher's pending contracts",
+  //     statusCode: 404,
+  //     code: "ERR_NF",
+  //   });
+  // } else {
+  //   return {
+  //     valid: true,
+  //   };
+  // }
 }

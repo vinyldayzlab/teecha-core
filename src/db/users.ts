@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
+import mongoose, { set } from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true },
   auth0_id: { type: String, required: true },
   teacher_code: { type: String },
-  pending_students: { type: [String], default: [] },
 });
 
 const usersCollection = "users";
@@ -16,6 +14,14 @@ export const getUserByAuth0Id = (auth0Id: string) =>
   UserModel.findOne({ auth0_id: auth0Id });
 export const deleteUserById = (id: string) =>
   UserModel.findOneAndDelete({ _id: id });
+export const updateUserById = (
+  id: string,
+  add?: Record<string, unknown>,
+  remove?: Record<string, unknown>,
+) =>
+  UserModel.findByIdAndUpdate(id, { $set: add }, { $unset: remove }).then(
+    (user) => user?.toObject(),
+  );
 export const getUsers = () => UserModel.find();
 
 // no front, tem que ter o "sou aluno" e "sou professor"
@@ -24,6 +30,14 @@ export const getUsers = () => UserModel.find();
 // userRegister in auth0 (role: teacher)
 // if its ok, then createUser -> adds auth0 info in users collection.
 // criar aluno no contrato -> adicionar o student_email e status PENDING
+
+// - login
+// -- tem cadastro
+// --- tela de login
+// -- nao tem
+// --- aluno ou professor?
+// ---- aluno -> codigo -> cadastro -> auth0 -> segue o jogo
+// ---- professor -> tela de cadastro -> auth0 -> segue o jogo
 
 // sou aluno
 // você tem cadastro? se não, tela de validação do código do professor, se sim, login

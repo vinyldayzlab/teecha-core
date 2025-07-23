@@ -1,5 +1,19 @@
 import type { NextFunction, Request, Response } from "express";
-import { validateTeacher } from "./service";
+import { initializeTeacher, validateTeacher } from "./service";
+
+export const createTeacherController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { auth0_id, roles } = req.body;
+    const user = await initializeTeacher(auth0_id, roles);
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const validateTeacherController = async (
   req: Request,
