@@ -10,4 +10,14 @@ describe("getErrorMessage", () => {
     const error = { message: "Custom error message" };
     expect(getErrorMessage(error)).toBe("Custom error message");
   });
+
+  test("should return the error if its a string", () => {
+    const error = "Some error";
+    expect(getErrorMessage(error)).toBe("Some error");
+  });
+
+  test("should return fallback message for unknown error types", () => {
+    const error = 42;
+    expect(getErrorMessage(error)).toBe("An error occurred");
+  });
 });
