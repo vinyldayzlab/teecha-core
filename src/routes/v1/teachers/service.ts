@@ -4,8 +4,23 @@ import AuthenticationError from "../../../errors/AuthenticationError";
 import CustomError from "../../../errors/CustomError";
 import DatabaseOperationError from "../../../errors/DatabaseOperationError";
 import EntityNotFoundError from "../../../errors/EntityNotFoundError";
-import { generateRandomTeacherCode, validateTeacherCode } from "../../../utils";
 import { initializeUser, verifyUserExists } from "../users/service";
+
+export function generateRandomTeacherCode(): string {
+  const CODE_LENGTH = 6;
+  const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "";
+  for (let i = 0; i < CODE_LENGTH; i++) {
+    const randomIndex = Math.floor(Math.random() * CHARSET.length);
+    code += CHARSET[randomIndex];
+  }
+  return code;
+}
+
+export const validateTeacherCode = (code: string): boolean => {
+  const regex = /^[A-Z0-9]{6}$/;
+  return regex.test(code);
+};
 
 export async function initializeTeacher(auth0_id: string, roles: string[]) {
   const user = await verifyUserExists(auth0_id);
