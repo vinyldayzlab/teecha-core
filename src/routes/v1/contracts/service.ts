@@ -1,5 +1,5 @@
-import { getPendingStudentsByTeacherId } from "@/db/teachers";
-import EntityNotFoundError from "@/errors/EntityNotFoundError";
+import { getPendingStudentsByTeacherId } from "@db/teachers";
+import EntityNotFoundError from "@errors/EntityNotFoundError";
 
 export async function validateContract(
   teacher_id: string,

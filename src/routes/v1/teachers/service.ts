@@ -1,10 +1,10 @@
-import { getTeacherByCode } from "../../../db/teachers";
-import { createUser } from "../../../db/users";
-import AuthenticationError from "@/errors/AuthenticationError";
-import CustomError from "../../../errors/CustomError";
-import DatabaseOperationError from "../../../errors/DatabaseOperationError";
-import EntityNotFoundError from "../../../errors/EntityNotFoundError";
-import { initializeUser, verifyUserExists } from "../users/service";
+import { getTeacherByCode } from "@db/teachers";
+import { createUser } from "@db/users";
+import AuthenticationError from "@errors/AuthenticationError";
+import CustomError from "@errors/CustomError";
+import DatabaseOperationError from "@errors/DatabaseOperationError";
+import EntityNotFoundError from "@errors/EntityNotFoundError";
+import { initializeUser, verifyUserExists } from "@routes/v1/users/service";
 
 export function generateRandomTeacherCode(): string {
   const CODE_LENGTH = 6;

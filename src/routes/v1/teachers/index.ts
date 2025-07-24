@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import authenticateUser from "../../../middleware/authenticate-user";
+import authenticateUser from "@middleware/authenticate-user";
 import {
   createTeacherController,
   validateTeacherController,
@@ -8,7 +8,7 @@ import {
   validateTeacherSchema,
   createTeacherSchema,
 } from "../../../data/request-schemas";
-import validateRequest from "../../../middleware/validate-request";
+import validateRequest from "@middleware/validate-request";
 
 const teachers: Router = express.Router();
 

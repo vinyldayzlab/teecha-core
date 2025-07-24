@@ -18,6 +18,7 @@ export default {
       },
     ],
   },
+  collectCoverageFrom: ["src/**/*.{js,ts}", "!src/**/*.d.ts"],
   moduleNameMapper: {
     ...pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
       prefix: "<rootDir>/",

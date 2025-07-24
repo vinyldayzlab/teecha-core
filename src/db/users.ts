@@ -1,12 +1,20 @@
-import mongoose, { set } from "mongoose";
+import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+export interface IUser extends Document {
+  auth0_id: string;
+  teacher_code: string;
+}
+
+const userSchema = new mongoose.Schema<IUser>({
   auth0_id: { type: String, required: true },
   teacher_code: { type: String },
 });
 
 const usersCollection = "users";
-export const UserModel = mongoose.model("User", userSchema, usersCollection);
+const UserModel =
+  (mongoose.models.User as mongoose.Model<IUser>) ||
+  mongoose.model("User", userSchema, usersCollection);
+export default UserModel;
 
 export const createUser = (values: Record<string, unknown>) =>
   new UserModel(values).save().then((user) => user.toObject());

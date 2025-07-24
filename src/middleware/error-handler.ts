@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import config from "@/config";
 import { getErrorMessage } from "@/utils";
-import CustomError from "@/errors/CustomError";
+import CustomError from "@errors/CustomError";
 import { UnauthorizedError } from "express-oauth2-jwt-bearer";
 import Joi from "joi";
 

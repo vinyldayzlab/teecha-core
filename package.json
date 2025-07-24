@@ -5,7 +5,12 @@
   "main": "index.js",
   "type": "module",
   "_moduleAliases": {
-    "@": "dist"
+    "@": "dist",
+    "@errors": "dist/errors",
+    "@db": "dist/db",
+    "@middleware": "dist/middleware",
+    "@routes": "dist/routes",
+    "@tests": "dist/tests"
   },
   "scripts": {
     "build": "tsup",
@@ -27,7 +32,6 @@
     "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongodb": "^4.0.6",
-    "@types/mongoose": "^5.11.96",
     "@types/morgan": "^1.9.10",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",

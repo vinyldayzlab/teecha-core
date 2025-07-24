@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { validateContractController } from "./controller";
-import authenticateUser from "@/middleware/authenticate-user";
+import authenticateUser from "@middleware/authenticate-user";
 
 const contracts: Router = express.Router();
 
