@@ -1,10 +1,7 @@
 import { getPendingStudentsByTeacherId } from "@db/teachers";
 import EntityNotFoundError from "@errors/EntityNotFoundError";
 
-export async function validateContract(
-  teacher_id: string,
-  student_email: string,
-) {
+export async function validateContract(teacher_id: string, student_email: string) {
   const students = await getPendingStudentsByTeacherId(teacher_id);
   if (!students) {
     throw new EntityNotFoundError({

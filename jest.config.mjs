@@ -1,9 +1,7 @@
 import { readFileSync } from "fs";
 import { pathsToModuleNameMapper } from "ts-jest";
 
-const tsconfig = JSON.parse(
-  readFileSync(new URL("./tsconfig.json", import.meta.url)),
-);
+const tsconfig = JSON.parse(readFileSync(new URL("./tsconfig.json", import.meta.url)));
 
 export default {
   preset: "ts-jest/presets/default-esm",

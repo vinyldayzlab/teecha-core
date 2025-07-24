@@ -5,12 +5,7 @@ import CustomError from "@errors/CustomError";
 import { UnauthorizedError } from "express-oauth2-jwt-bearer";
 import Joi from "joi";
 
-export default function errorHandler(
-  error: unknown,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+export default function errorHandler(error: unknown, req: Request, res: Response, next: NextFunction) {
   if (res.headersSent || config.debug) {
     next(error);
     return;
@@ -51,9 +46,7 @@ export default function errorHandler(
 
   res.status(500).json({
     error: {
-      message:
-        getErrorMessage(error) ||
-        "An error occurred. Please view logs for more details.",
+      message: getErrorMessage(error) || "An error occurred. Please view logs for more details.",
     },
   });
 }

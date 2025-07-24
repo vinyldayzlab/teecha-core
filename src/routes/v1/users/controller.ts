@@ -3,11 +3,7 @@ import EntityNotFoundError from "@errors/EntityNotFoundError";
 import logger from "@/logger";
 import { getUserByAuth0Id } from "@db/users";
 
-export const getUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
   // logger
   //   .child({ logMetadata: `User: ${req.auth?.payload.sub}` })
   //   .debug("Requesting users");

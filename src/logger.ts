@@ -15,11 +15,9 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.errors({ stack: true }),
     winston.format.timestamp({ format: "YYYY-MM-DD hh:mm:ss:SSS A" }),
-    winston.format.printf(
-      ({ timestamp, level, message, logMetadata, stack }) => {
-        return `${timestamp} ${level}: ${logMetadata || ""} ${message} ${stack || ""}`;
-      },
-    ),
+    winston.format.printf(({ timestamp, level, message, logMetadata, stack }) => {
+      return `${timestamp} ${level}: ${logMetadata || ""} ${message} ${stack || ""}`;
+    }),
   ),
   transports: [new winston.transports.Console()],
 });

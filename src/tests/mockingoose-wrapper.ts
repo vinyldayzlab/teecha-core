@@ -8,8 +8,6 @@ type MockingooseFn = (model: ModelType) => {
   toReturn: (data: unknown, method?: MethodType) => void;
 };
 
-const mockingooseFn: MockingooseFn = (
-  "default" in mockingoose ? mockingoose.default : mockingoose
-) as MockingooseFn;
+const mockingooseFn: MockingooseFn = ("default" in mockingoose ? mockingoose.default : mockingoose) as MockingooseFn;
 
 export default mockingooseFn;

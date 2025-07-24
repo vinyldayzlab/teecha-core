@@ -1,7 +1,4 @@
-import {
-  generateRandomTeacherCode,
-  validateTeacherCode,
-} from "@/routes/v1/teachers/service";
+import { generateRandomTeacherCode, validateTeacherCode } from "@/routes/v1/teachers/service";
 
 describe("generateRandomTeacherCode", () => {
   it("generates a code of length 6", () => {
