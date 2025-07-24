@@ -1,6 +1,6 @@
-import { createServer } from "./server";
-import { disconnectDatabase } from "./db";
-import config from "./config";
+import { createServer } from "@/server";
+import { disconnectDatabase } from "@/db";
+import config from "@/config";
 
 const start = async () => {
   const app = await createServer();

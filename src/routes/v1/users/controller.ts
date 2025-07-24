@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
-import EntityNotFoundError from "../../../errors/EntityNotFoundError";
-import logger from "../../../logger";
-import { getUserByAuth0Id } from "../../../db/users";
+import EntityNotFoundError from "@/errors/EntityNotFoundError";
+import logger from "@/logger";
+import { getUserByAuth0Id } from "@/db/users";
 
 export const getUser = async (
   req: Request,

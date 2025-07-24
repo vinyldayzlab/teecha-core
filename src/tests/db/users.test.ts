@@ -1,6 +1,6 @@
 import mockingoose from "mockingoose";
-import { verifyUserExists } from "../../routes/v1/users/service";
-import { UserModel } from "../../db/users";
+import { verifyUserExists } from "@/routes/v1/users/service";
+import { UserModel } from "@/db/users";
 import mongoose from "mongoose";
 
 describe("getUserByAuth0Id", () => {

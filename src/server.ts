@@ -3,11 +3,11 @@ import type { Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
-import v1 from "./routes/v1";
-import errorHandler from "./middleware/error-handler";
-import config from "./config";
-import { runIssueTestToken } from "./issue-test-token";
-import { connectToDatabase } from "./db";
+import v1 from "@/routes/v1";
+import errorHandler from "@/middleware/error-handler";
+import config from "@/config";
+import { runIssueTestToken } from "@/issue-test-token";
+import { connectToDatabase } from "@/db";
 
 export const createServer = async () => {
   await connectToDatabase();

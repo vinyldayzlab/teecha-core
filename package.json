@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "_moduleAliases": {
+    "@": "dist"
+  },
   "scripts": {
-    "start": "nodemon",
-    "dev": "nodemon --watch src --exec \"node --loader ts-node/esm ./src/index.ts\"",
+    "build": "tsup",
+    "start": "node dist/index.js",
+    "dev": "tsup src/index.ts --watch --onSuccess \"node dist/index.js\"",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -30,11 +34,12 @@
     "eslint-plugin-jest": "^29.0.1",
     "eslint-plugin-prettier": "^5.5.3",
     "globals": "^16.3.0",
-    "jest": "^30.0.4",
+    "jest": "^30.0.5",
     "mockingoose": "^2.16.2",
     "nodemon": "^3.1.10",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0"
   },
@@ -46,9 +51,11 @@
     "helmet": "^8.1.0",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.4",
     "morgan": "^1.10.1",
+    "tsconfig-paths": "^4.2.0",
     "winston": "^3.17.0"
   }
 }

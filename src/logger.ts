@@ -1,5 +1,5 @@
 import winston from "winston";
-import config from "./config";
+import config from "@/config";
 
 const logLevels = {
   error: 0, // highest priority,

@@ -1,4 +1,4 @@
-import { getUserByAuth0Id } from "../../../db/users";
+import { getUserByAuth0Id } from "@/db/users";
 
 export async function verifyUserExists(auth0_id: string) {
   const user = await getUserByAuth0Id(auth0_id);

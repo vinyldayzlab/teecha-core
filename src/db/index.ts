@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import config from "../config";
-import DatabaseConnectionError from "../errors/DatabaseConnectionError";
+import config from "@/config";
+import DatabaseConnectionError from "@/errors/DatabaseConnectionError";
 
 export const connectToDatabase = async () => {
   try {

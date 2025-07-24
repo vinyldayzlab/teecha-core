@@ -1,6 +1,6 @@
 import { getTeacherByCode } from "../../../db/teachers";
 import { createUser } from "../../../db/users";
-import AuthenticationError from "../../../errors/AuthenticationError";
+import AuthenticationError from "@/errors/AuthenticationError";
 import CustomError from "../../../errors/CustomError";
 import DatabaseOperationError from "../../../errors/DatabaseOperationError";
 import EntityNotFoundError from "../../../errors/EntityNotFoundError";

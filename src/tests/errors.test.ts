@@ -1,4 +1,4 @@
-import CustomError from "../errors/CustomError";
+import CustomError from "@/errors/CustomError";
 
 describe("CustomError", () => {
   it("should create an error with message and status code", () => {
