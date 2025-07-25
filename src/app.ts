@@ -1,8 +1,9 @@
-import { createServer } from "@/server";
-import { disconnectDatabase } from "@/db";
+import { createServer } from "@setup/server";
+import { connectToDatabase, disconnectDatabase } from "@setup/database";
 import config from "@/config";
 
 const start = async () => {
+  await connectToDatabase();
   const app = await createServer();
 
   const server = app.listen(config.port, () => {

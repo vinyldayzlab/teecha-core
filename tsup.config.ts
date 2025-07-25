@@ -1,7 +1,8 @@
 import { defineConfig } from "tsup";
+import path from "path";
 
 export default defineConfig({
-  entry: ["src/index.ts"],
+  entry: ["src/app.ts"],
   outDir: "dist",
   format: ["esm"],
   sourcemap: true,
@@ -11,7 +12,13 @@ export default defineConfig({
   tsconfig: "./tsconfig.json",
   esbuildOptions(options) {
     options.alias = {
-      "@": "./src",
+      "@": path.resolve(__dirname, "src"),
+      "@errors": path.resolve(__dirname, "src/errors"),
+      "@db": path.resolve(__dirname, "src/db"),
+      "@routes": path.resolve(__dirname, "src/routes"),
+      "@setup": path.resolve(__dirname, "src/setup"),
+      "@middleware": path.resolve(__dirname, "src/middleware"),
+      "@tests": path.resolve(__dirname, "src/tests"),
     };
   },
 });
