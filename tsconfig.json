@@ -16,11 +16,13 @@
       "@db/*": ["src/db/*"],
       "@middleware/*": ["src/middleware/*"],
       "@routes/*": ["src/routes/*"],
+      "@setup/*": ["src/setup/*"],
       "@tests/*": ["src/tests/*"]
     },
     "strict": true,
     "skipLibCheck": true,
-    "typeRoots": ["./@types", "./node_modules/@types"]
+    "typeRoots": ["./@types", "./node_modules/@types", "./node_modules"],
+    "types": ["vitest/globals"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
