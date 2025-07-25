@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import type { IUser } from "@db/users";
 import UserModel from "@db/users";
 import { verifyUserExists } from "@routes/v1/users/service";
-import mockingooseFn from "@/tests/mockingoose-wrapper";
+import mockingooseFn from "@tests/mockingoose-wrapper";
 
 describe("getUserByAuth0Id", () => {
   it("should return the user if its auth0_id exists", async () => {
@@ -17,7 +17,7 @@ describe("getUserByAuth0Id", () => {
   });
 
   it("should return undefined if user does not exist", async () => {
-    mockingooseFn(UserModel).toReturn(null, "findOne");
+    mockingooseFn(UserModel).toReturn(undefined, "findOne");
 
     const results = await verifyUserExists("abc123");
     expect(results).toBeUndefined();
