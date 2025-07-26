@@ -18,6 +18,10 @@ export const createServer = async () => {
 
   app.use("/api/v1", v1);
 
+  app.get("/ping", (req: Request, res: Response) => {
+    res.send("pong");
+  });
+
   app.use(errorHandler);
 
   return app;
