@@ -4,7 +4,7 @@ import config from "@/config";
 
 const health: Router = express.Router();
 
-health.get("/health", (req: Request, res: Response) => {
+health.get("/", (req: Request, res: Response) => {
   runIssueTestToken();
   res.json({ ok: true, environment: config.env });
 });
