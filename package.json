@@ -17,8 +17,8 @@
     "build": "tsc --sourceMap",
     "start": "node dist/app.js",
     "dev": "tsup src/app.ts --watch --onSuccess \"node dist/app.js\"",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
+    "test": "vitest --silent",
+    "test:coverage": "vitest --coverage --silent",
     "lint": "eslint"
   },
   "keywords": [],
