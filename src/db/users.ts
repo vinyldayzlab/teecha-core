@@ -17,7 +17,8 @@ export default UserModel;
 export const createUser = (values: Record<string, unknown>) => new UserModel(values).save().then((user) => user.toObject());
 export const getUserByAuth0Id = (auth0Id: string) => UserModel.findOne({ auth0_id: auth0Id }).lean();
 export const deleteUserById = (id: string) => UserModel.findOneAndDelete({ _id: id });
-export const updateUserById = (id: string, add?: Record<string, unknown>, remove?: Record<string, unknown>) => UserModel.findByIdAndUpdate(id, { $set: add }, { $unset: remove }).then((user) => user?.toObject());
+export const updateUserById = (id: string, add?: Record<string, unknown>, remove?: Record<string, unknown>) =>
+  UserModel.findByIdAndUpdate(id, { $set: add }, { $unset: remove }).then((user) => user?.toObject());
 export const getUsers = () => UserModel.find();
 
 // no front, tem que ter o "sou aluno" e "sou professor"

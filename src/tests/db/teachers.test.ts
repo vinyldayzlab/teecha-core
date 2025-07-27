@@ -1,29 +1,10 @@
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from "vitest";
-import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { describe, it, expect } from "vitest";
 import UserModel from "@db/users";
 import { getTeacherByCode } from "@db/teachers";
 import { ObjectId } from "mongodb";
+import { setupTestDB } from "@tests/utils/database";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-  const uri = mongoServer.getUri();
-  await mongoose.connect(uri);
-});
-
-afterAll(async () => {
-  await mongoose.disconnect();
-  await mongoServer.stop();
-});
-
-beforeEach(async () => {
-  if (!mongoose.connection.db) {
-    throw new Error("Mongoose DB connection not established");
-  }
-  await mongoose.connection.db.dropDatabase();
-});
+setupTestDB();
 
 describe("getTeacherByCode", () => {
   it("should return the _id of the teacher with the given code", async () => {
