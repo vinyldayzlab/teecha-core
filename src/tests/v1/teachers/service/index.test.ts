@@ -5,6 +5,7 @@ import errorHandler from "@middleware/error-handler";
 import { describe, it, expect, vi, type Mock, beforeEach } from "vitest";
 import AuthenticationError from "@errors/AuthenticationError";
 import DatabaseOperationError from "@errors/DatabaseOperationError";
+import EntityNotFoundError from "@/errors/EntityNotFoundError";
 import { setDebug } from "@tests/vitest.setup";
 
 vi.mock("@routes/v1/teachers/controller", async () => {
@@ -39,11 +40,21 @@ vi.mock("@db/users", async () => {
   };
 });
 
+vi.mock("@db/teachers", async () => {
+  const actual = await vi.importActual<typeof import("@db/teachers")>("@db/teachers");
+  return {
+    ...actual,
+    getTeacherByCode: vi.fn(),
+  };
+});
+
 import * as UserService from "@routes/v1/users/service";
 import * as UserDb from "@db/users";
+import * as TeacherDb from "@db/teachers";
 import * as TeacherService from "@routes/v1/teachers/service";
 import * as TeacherServiceFunctions from "@routes/v1/teachers/service/functions";
 import teachers from "@routes/v1/teachers";
+import { ObjectId } from "mongodb";
 
 describe("routes", () => {
   let app: express.Express;
@@ -150,5 +161,41 @@ describe("initializeTeacher", () => {
       contracts: [],
       teacher_code: teacherCode,
     });
+  });
+});
+
+describe("validateTeacher", () => {
+  const mockTeacher = { _id: new ObjectId("155fe1e279483e33811768fb") };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("should return the teacher when found", async () => {
+    (TeacherDb.getTeacherByCode as Mock).mockResolvedValue(mockTeacher);
+
+    const result = await TeacherService.validateTeacher("XYZ123");
+
+    expect(TeacherDb.getTeacherByCode).toHaveBeenCalledWith("XYZ123");
+    expect(result).toEqual(mockTeacher);
+    expect(result).toBeTruthy();
+    expect(result?._id.toString()).toBe(mockTeacher._id.toString());
+  });
+
+  it("should throw EntityNotFoundError if teacher not found", async () => {
+    (TeacherDb.getTeacherByCode as Mock).mockResolvedValue(null);
+
+    try {
+      await TeacherService.validateTeacher("XYZ123");
+      throw new Error("Forced error throw because expected validateTeacher to throw, but it did not.");
+    } catch (err) {
+      expect(err).toBeInstanceOf(EntityNotFoundError);
+      const nfErr = err as EntityNotFoundError;
+      expect(nfErr.message).toBe("Teacher code not found");
+      expect(nfErr.statusCode).toBe(404);
+      expect(nfErr.code).toBe("ERR_NF");
+    }
+
+    expect(TeacherDb.getTeacherByCode).toHaveBeenCalledWith("XYZ123");
   });
 });
