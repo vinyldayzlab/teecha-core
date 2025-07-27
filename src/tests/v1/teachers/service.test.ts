@@ -1,7 +1,8 @@
 import teachers from "@routes/v1/teachers";
 import { generateRandomTeacherCode, validateTeacherCode } from "@/routes/v1/teachers/service";
-import express, { type NextFunction, type Request, type Response } from "express";
+import express, { type Request, type Response } from "express";
 import request from "supertest";
+import { createTestApp } from "@tests/utils/create-app";
 
 vi.mock("@routes/v1/teachers/controller", async () => {
   const actual = await vi.importActual<typeof import("@routes/v1/teachers/controller")>("@routes/v1/teachers/controller");
@@ -17,9 +18,8 @@ vi.mock("@routes/v1/teachers/controller", async () => {
 describe("routes", () => {
   let app: express.Express;
 
-  beforeAll(() => {
-    app = express();
-    app.use(express.json());
+  beforeEach(() => {
+    app = createTestApp();
     app.use("/teachers", teachers);
   });
 

@@ -6,3 +6,12 @@ vi.mock("@/middleware/authenticate-user", () => ({
     next();
   },
 }));
+
+vi.mock("@/config", () => ({
+  default: {
+    mongoURL: "mongodb://localhost:27017/test",
+    appSecret: "my-test-secret",
+    env: "test",
+    debug: "true",
+  },
+}));

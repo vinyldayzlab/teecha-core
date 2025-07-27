@@ -9,4 +9,8 @@ health.get("/", (req: Request, res: Response) => {
   res.json({ ok: true, environment: config.env });
 });
 
+health.get("/test", (req: Request, res: Response) => {
+  throw new Error("Test error");
+});
+
 export default health;

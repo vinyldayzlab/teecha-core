@@ -1,5 +1,4 @@
 import express from "express";
-import type { Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
@@ -17,10 +16,6 @@ export const createServer = async () => {
     .use(helmet());
 
   app.use("/api/v1", v1);
-
-  app.get("/ping", (req: Request, res: Response) => {
-    res.send("pong");
-  });
 
   app.use(errorHandler);
 

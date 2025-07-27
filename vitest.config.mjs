@@ -17,9 +17,16 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: "istanbul",
+      exclude: ["**/vitest.setup.ts", "**/tests/**"],
+      thresholds: {
+        statements: 85,
+        branches: 85,
+        functions: 85,
+        lines: 85,
+      },
     },
     environment: "node",
-    setupFiles: "./vitest.setup.ts",
+    setupFiles: "./src/tests/vitest.setup.ts",
     isolate: true,
   },
 });
