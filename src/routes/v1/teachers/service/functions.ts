@@ -3,15 +3,13 @@ import { generateRandomTeacherCode, validateTeacherCode } from "./utils";
 import CustomError from "@errors/CustomError";
 
 export async function generateTeacherCode() {
-  let code = generateRandomTeacherCode();
   let attempts = 0;
   while (attempts < 10) {
+    const code = generateRandomTeacherCode();
     if (validateTeacherCode(code)) {
       const teacher = await getTeacherByCode(code);
       if (!teacher) {
         return code;
-      } else {
-        code = generateRandomTeacherCode();
       }
     } else {
       throw new CustomError({
