@@ -19,7 +19,7 @@ export default defineConfig({
       provider: "istanbul",
     },
     environment: "node",
-    setupFiles: "./src/tests/setup.ts",
+    setupFiles: "./vitest.setup.ts",
     isolate: true,
   },
 });
