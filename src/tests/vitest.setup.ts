@@ -7,11 +7,19 @@ vi.mock("@/middleware/authenticate-user", () => ({
   },
 }));
 
+let debugValue = false;
+
 vi.mock("@/config", () => ({
   default: {
     mongoURL: "mongodb://localhost:27017/test",
     appSecret: "my-test-secret",
     env: "test",
-    debug: "true",
+    get debug() {
+      return debugValue;
+    },
   },
 }));
+
+export function setDebug(value: boolean) {
+  debugValue = value;
+}

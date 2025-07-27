@@ -3,6 +3,7 @@ import { generateRandomTeacherCode, validateTeacherCode } from "@/routes/v1/teac
 import express, { type Request, type Response } from "express";
 import request from "supertest";
 import { createTestApp } from "@tests/utils/create-app";
+import errorHandler from "@middleware/error-handler";
 
 vi.mock("@routes/v1/teachers/controller", async () => {
   const actual = await vi.importActual<typeof import("@routes/v1/teachers/controller")>("@routes/v1/teachers/controller");
@@ -21,6 +22,7 @@ describe("routes", () => {
   beforeEach(() => {
     app = createTestApp();
     app.use("/teachers", teachers);
+    app.use(errorHandler);
   });
 
   describe("POST /teachers/validate", () => {
