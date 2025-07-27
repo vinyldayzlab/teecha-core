@@ -23,7 +23,7 @@ vi.mock("@routes/v1/users/service", () => ({
 }));
 
 vi.mock("@routes/v1/teachers/service/functions", async () => {
-  const actual = await vi.importActual<typeof import("@routes/v1/teachers/service")>("@routes/v1/teachers/service");
+  const actual = await vi.importActual<typeof import("@routes/v1/teachers/service/functions")>("@routes/v1/teachers/service/functions");
   return {
     ...actual,
     generateTeacherCode: vi.fn().mockResolvedValue("TCH123"),
