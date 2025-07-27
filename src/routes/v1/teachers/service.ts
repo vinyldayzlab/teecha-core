@@ -26,7 +26,7 @@ export async function initializeTeacher(auth0_id: string, roles: string[]) {
   const user = await verifyUserExists(auth0_id);
   let userInfo = {};
   if (!user) {
-    const defaultUserInfo = await initializeUser(auth0_id);
+    const defaultUserInfo = initializeUser(auth0_id);
     userInfo = { ...userInfo, ...defaultUserInfo };
     if (roles.includes("teacher")) {
       const teacherInfo = {

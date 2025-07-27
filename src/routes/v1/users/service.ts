@@ -5,7 +5,7 @@ export async function verifyUserExists(auth0_id: string) {
   return user ?? undefined;
 }
 
-export async function initializeUser(auth0_id: string) {
+export function initializeUser(auth0_id: string) {
   return { auth0_id: auth0_id };
 }
 

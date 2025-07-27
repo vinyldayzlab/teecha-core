@@ -34,7 +34,7 @@ describe("initializeUser", () => {
   it("should return an object with the provided auth0_id", async () => {
     const auth0Id = "auth0|inituser123";
 
-    const result = await initializeUser(auth0Id);
+    const result = initializeUser(auth0Id);
 
     expect(result).toEqual({ auth0_id: auth0Id });
   });
