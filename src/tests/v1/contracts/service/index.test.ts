@@ -71,5 +71,7 @@ describe("getPendingContracts", () => {
         code: "ERR_NF",
       }),
     );
+
+    expect(getPendingContractsByTeacherId).toHaveBeenCalledWith(teacherId.toString(), studentEmail);
   });
 });
