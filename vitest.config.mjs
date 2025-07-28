@@ -18,6 +18,7 @@ export default defineConfig({
     coverage: {
       all: true,
       provider: "istanbul",
+      include: ["src/**/*.{js,ts}"],
       exclude: ["**/vitest.setup.ts", "**/tests/**"],
       thresholds: {
         statements: 85,
