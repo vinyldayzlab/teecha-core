@@ -10,5 +10,3 @@ export const validateContractController = async (req: Request, res: Response, ne
     next(err);
   }
 };
-
-// tirar student do pending_students, criar um contrato e adicionar ele no array de contracts dentro de teacher

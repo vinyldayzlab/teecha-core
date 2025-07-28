@@ -1,8 +1,8 @@
-import { getPendingStudentsByTeacherId } from "@db/teachers";
+import { getPendingContractsByTeacherId } from "@/db/contracts";
 import EntityNotFoundError from "@errors/EntityNotFoundError";
 
 export async function validateContract(teacher_id: string, student_email: string) {
-  const students = await getPendingStudentsByTeacherId(teacher_id);
+  const students = await getPendingContractsByTeacherId(teacher_id);
   if (!students) {
     throw new EntityNotFoundError({
       message: "This teacher doesn't have any pending students",
