@@ -133,7 +133,6 @@ describe("errorHandler", () => {
     it("should respect APP_DEBUG=false", async () => {
       const unknownError = new Error("Production mode error");
       errorHandler(unknownError, req, res, next);
-      console.log("x", res);
 
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.json).toHaveBeenCalledWith({
