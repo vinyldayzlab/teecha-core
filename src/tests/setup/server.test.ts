@@ -1,6 +1,6 @@
 import { describe, it, beforeAll, expect } from "vitest";
 import request from "supertest";
-import { createServer } from "@/server";
+import { createServer } from "@setup/server";
 import express, { type Request, type Response, type NextFunction } from "express";
 import v1 from "@routes/v1";
 import config from "@/config";

@@ -2,8 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
-import v1 from "@/routes/v1";
-import errorHandler from "@/middleware/error-handler";
+import v1 from "@routes/v1";
+import errorHandler from "@middleware/error-handler";
 
 export const createServer = async () => {
   const app = express();
