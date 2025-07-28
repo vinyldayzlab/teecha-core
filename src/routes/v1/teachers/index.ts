@@ -1,8 +1,8 @@
 import express, { Router } from "express";
 import authenticateUser from "@middleware/authenticate-user";
-import { validateTeacherSchema, createTeacherSchema } from "@/data/request-schemas";
 import validateRequest from "@middleware/validate-request";
 import { createTeacherController, validateTeacherController } from "./controller";
+import { createTeacherSchema, validateTeacherSchema } from "@data/teacher-schemas";
 
 const teachers: Router = express.Router();
 

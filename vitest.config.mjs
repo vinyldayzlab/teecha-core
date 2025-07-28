@@ -7,6 +7,7 @@ export default defineConfig({
     alias: {
       "@/": new URL("./src/", import.meta.url).pathname,
       "@errors": new URL("./src/errors", import.meta.url).pathname,
+      "@data": new URL("./src/data", import.meta.url).pathname,
       "@db": new URL("./src/db", import.meta.url).pathname,
       "@middleware": new URL("./src/middleware", import.meta.url).pathname,
       "@routes": new URL("./src/routes", import.meta.url).pathname,

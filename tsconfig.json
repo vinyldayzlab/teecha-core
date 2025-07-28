@@ -14,6 +14,7 @@
       "@/*": ["src/*"],
       "@errors/*": ["src/errors/*"],
       "@db/*": ["src/db/*"],
+      "@data/*": ["src/data/*"],
       "@middleware/*": ["src/middleware/*"],
       "@routes/*": ["src/routes/*"],
       "@setup/*": ["src/setup/*"],
