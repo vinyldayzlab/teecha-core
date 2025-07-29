@@ -1,10 +1,4 @@
-<p align="center">
-<img style="align:center;" src="./resources/icon.png" alt="Notesnook Logo" width="100" />
-</p>
-
 <h1 align="center">Teecha</h1>
-
----
 
 ## Developer guide
 
