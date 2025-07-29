@@ -1,5 +1,9 @@
 <h1 align="center">Teecha</h1>
 
+## Overview
+
+- Coming soon!
+
 ## Developer guide
 
 ### Technologies & languages
